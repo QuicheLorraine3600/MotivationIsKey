@@ -1,4 +1,3 @@
-const getQuote = require('../quote.js');
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {

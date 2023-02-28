@@ -1,4 +1,4 @@
-const getQuote = require('../quote.js');
+const quoteAPI = require('../quoteAPI.js');
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
@@ -6,8 +6,10 @@ module.exports = {
 		.setName('motivateme')
 		.setDescription('Gimme motivation plz'),
 	async execute(interaction) {
-		getQuote().then(quote => {
-			interaction.reply(quote.q);
+		quoteAPI.getRandomQuote().then(quote => {
+			quoteAPI.getEmbedOfQuote(quote).then(embed => {
+				interaction.reply({embeds: [embed] });
+			})
 		})
 	},
 };
