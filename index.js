@@ -1,4 +1,4 @@
-const MAX_TIME_BETWEEN_QUOTE = 3600 * 4 //in seconds
+const MAX_TIME_BETWEEN_QUOTE = 3600 * 24 //in seconds
 const CLIENT_TOKEN = process.env.CLIENT_TOKEN
 const QUOTE_GUILD_ID = process.env.QUOTE_GUILD_ID
 const QUOTE_CHANNEL_ID = process.env.QUOTE_CHANNEL_ID
