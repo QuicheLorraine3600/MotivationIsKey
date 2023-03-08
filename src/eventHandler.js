@@ -24,6 +24,13 @@ function registerAllEvents(client, config) {
 				})
 			})
 		})
+		cron.schedule('0 16 * * *', () => {
+			  client.guilds.fetch(QUOTE_GUILD_ID).then(guild => {
+				guild.channels.fetch(QUOTE_CHANNEL_ID).then(channel => {
+					channel.send({content: "https://cdn.discordapp.com/attachments/976878611590160385/1083044872153464873/download.jpeg"})
+				})
+			})
+		})
 	})
 }
 
