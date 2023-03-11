@@ -78,7 +78,7 @@ module.exports = {
 		const embed = new EmbedBuilder()
 			.setColor(0x0099FF)
 			.setAuthor({ name: interaction.member.displayName, iconURL: interaction.user.avatarURL() })
-			.setTitle("Nouvelle votation")
+			.setTitle("Nouvelle votation :flag_ch:")
 			.setDescription(description)
 			.addFields(generateEmbedFields(emojis, choice1, choice2, choice3, choice4))
 			.setFooter({ text: 'Gouvernement Populaire de la Singerie', iconURL: interaction.guild.iconURL() });
