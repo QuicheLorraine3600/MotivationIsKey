@@ -17,14 +17,15 @@ function getFirstQuoteFromURL(url) {
 
 function getEmbedOfQuote(quote) {
 	return new Promise((resolve, reject) => {
-		searchImage(quote.a).then(imageURL => {
+		// searchImage(quote.a).then(imageURL => {
 			const embed = new EmbedBuilder()
 				.setColor(0x0099FF)
-				.setAuthor({ name: quote.a, iconURL: imageURL, url: "https://fr.wikipedia.org/wiki/" + quote.a.replaceAll(" ", "_") })
+				// .setAuthor({ name: quote.a, iconURL: imageURL, url: "https://fr.wikipedia.org/wiki/" + quote.a.replaceAll(" ", "_") })
+				.setAuthor({ name: quote.a, url: "https://fr.wikipedia.org/wiki/" + quote.a.replaceAll(" ", "_") })
 				.setTitle(quote.q)
 				// .setURL('https://www.coinbase.com/fr/price/bitcoin')
 			resolve(embed)
-		})	
+		// })	
 	})
 }
 

@@ -8,7 +8,11 @@ const gis = util.promisify(require('g-i-s'));
 function searchImage(query) {
 	return new Promise((resolve, reject) => {
 		// gis(query).then((results) => resolve(results[getRandomInt(results.length)].url))
-		gis(query).then((results) => resolve(results[0].url))
+		gis(query).then((results) => {
+			console.log(results)
+			resolve("a")
+			// resolve(results[0].url)
+	})
 	})	
 }
 
