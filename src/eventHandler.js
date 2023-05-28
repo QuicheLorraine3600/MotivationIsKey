@@ -25,15 +25,15 @@ function registerAllEvents(client, config) {
 			})
 		})
 
-		cron.schedule('0 17 * * 7', () => {
-			  client.guilds.fetch(QUOTE_GUILD_ID).then(guild => {
-				guild.channels.fetch(QUOTE_CHANNEL_ID).then(channel => {
-					channel.send({content: ":badminton: :hot_face: Inscriptions au badminton par ici les loulous @here ! https://sport.unil.ch/?pid=80&aid=61#content :muscle:"}).then(message => {
-						message.react("✅")
-					});
-				})
-			})
-		})
+		// cron.schedule('0 17 * * 7', () => {
+		// 	  client.guilds.fetch(QUOTE_GUILD_ID).then(guild => {
+		// 		guild.channels.fetch(QUOTE_CHANNEL_ID).then(channel => {
+		// 			channel.send({content: ":badminton: :hot_face: Inscriptions au badminton par ici les loulous @here ! https://sport.unil.ch/?pid=80&aid=61#content :muscle:"}).then(message => {
+		// 				message.react("✅")
+		// 			});
+		// 		})
+		// 	})
+		// })
 		
 		// cron.schedule('0 16 * * *', () => {
 		// 	  client.guilds.fetch(QUOTE_GUILD_ID).then(guild => {
