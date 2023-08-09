@@ -11,6 +11,6 @@ export default class PublicDomain extends Command {
 	}
 
 	override async execute(bot: Bot, interaction: Interaction) {
-		interaction.reply("https://github.com/QuicheLorraine3600/MotivationIsTheKey")
+		interaction.reply("https://github.com/QuicheLorraine3600/MotivationIsKey")
 	}
 }
