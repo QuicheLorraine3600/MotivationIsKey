@@ -1,17 +1,23 @@
 {
   "dependencies": {
-    "discord.js": "^14.8.0",
-    "g-i-s": "^2.1.6",
-    "node-cron": "^3.0.2",
-    "node-fetch": "^2.6.9"
+    "discord.js": "^14.11.0",
+    "googlethis": "^1.7.1",
+    "immutable": "^4.3.1",
+    "sqlite3": "^5.1.6",
+    "winston": "^3.10.0"
   },
-  "name": "motivationisthekey",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "lauryne",
+  "version": "2.0.0",
+  "main": "./dist/App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node ./src/app/App.ts",
+    "deploy": "ts-node ./src/deploy.ts",
+    "global-deploy": "ts-node ./src/global-deploy.ts"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.4"
+  }
 }
