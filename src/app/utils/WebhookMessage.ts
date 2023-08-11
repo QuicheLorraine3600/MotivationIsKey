@@ -1,6 +1,6 @@
 import { TextChannel } from "discord.js"
 
-export default function sendWebhokMessageToChannel(channel: TextChannel, username: string, avatar: string, message: string) {
+export default function sendWebhookMessageToChannel(channel: TextChannel, username: string, avatar: string, message: string) {
 	return new Promise((resolve, reject) => {
 		channel.createWebhook({
 			name: username,

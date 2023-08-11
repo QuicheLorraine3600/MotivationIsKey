@@ -3,9 +3,7 @@ import logger from "./modules/Logger"
 
 import { TOKEN } from "../Env"
 
-// import { Database } from "sqlite3"
-// export const db =  new Database("db.sqlite")
-// db.close()
+import DB from "./modules/Database"
 
 const bot = new Bot() 
 bot.login(TOKEN)
@@ -15,11 +13,11 @@ logger.info("Here we go")
 process.on('SIGINT', () => {
 	logger.info("Caught interrupt signal");
 
-	// db.close()
+	DB.close()
 	bot.disconnect()
 
 	logger.info("Bye bye !");
 	setTimeout(() => {
 		process.exit(0)
-	}, 200)
+	}, 1000)
 });

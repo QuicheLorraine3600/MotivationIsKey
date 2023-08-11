@@ -3,7 +3,7 @@ import { SlashCommandBuilder } from "discord.js";
 import Bot from "../../Bot";
 import { Command, Interaction } from "../Command";
 
-import { getRandomQuote, getEmbedOfQuote } from "../../utils/QuoteAPI"
+import { getRandomQuote, getEmbedOfQuote } from "../../modules/QuoteAPI"
 import logger from "../../modules/Logger";
 
 export default class Ping extends Command {

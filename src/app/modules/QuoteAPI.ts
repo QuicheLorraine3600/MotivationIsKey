@@ -1,7 +1,9 @@
 import fetch from "node-fetch"
 
-import DefaultEmbed from "./DefaultEmbed"
+import DefaultEmbed from "../utils/DefaultEmbed"
 import { EmbedBuilder } from "discord.js"
+
+import wiki from 'wikijs';
 
 const API_URL_TODAY ="https://zenquotes.io/api/today"
 const API_URL_RANDOM ="https://zenquotes.io/api/random"
@@ -37,13 +39,33 @@ export function getDailyQuote() {
 
 export function getEmbedOfQuote(quote: Quote) {
 	return new Promise<EmbedBuilder>((resolve, reject) => {
-		resolve(
-			new DefaultEmbed()
-				.setAuthor({
-					name: quote.author,
-					url: "https://en.wikipedia.org/wiki/" + quote.author.replaceAll(" ", "_")
-				})
-				.setTitle(quote.content)
-		)
+		interface EmbedAuthor {
+			name: string,
+			iconURL?: string,
+			url?: string
+		}
+		let embedAuthor: EmbedAuthor = {
+			name: quote.author,
+			iconURL: undefined,
+			url: undefined
+		}
+
+		function end() {
+			resolve(
+				new DefaultEmbed()
+					.setAuthor(embedAuthor)
+					.setTitle(quote.content)
+			)
+		}
+
+		wiki()
+			.page(quote.author)
+			.then(page => {
+				embedAuthor.url = page.url()
+				page.mainImage().then(image => {
+					embedAuthor.iconURL = image
+					end()
+				}).catch(error => end())
+			}).catch(error => end())
 	})
 }

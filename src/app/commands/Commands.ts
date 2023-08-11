@@ -5,10 +5,16 @@ import Ping from "./src/Ping";
 import Help from "./src/Help";
 import MotivateMe from "./src/MotivateMe";
 import PublicDomain from "./src/PublicDomain";
+import Votation from "./src/Votation";
+import FakeMessage from "./src/FakeMessage";
+import ScheduleMessage from "./src/ScheduleMessage";
 
 export default List<Command>([
 	new Help(),
 	new MotivateMe(),
 	new Ping(),
-	new PublicDomain()
+	new PublicDomain(),
+	new Votation(),
+	new FakeMessage(),
+	new ScheduleMessage()
 ])
