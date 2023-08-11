@@ -11,7 +11,7 @@ export default class DefaultEmbed extends EmbedBuilder {
 			color: EmbedColor.BLUE,
             timestamp: new Date(),
             footer: {
-                text: "Fièrement propulsé par Monkey Studios",
+                text: "Fièrement propulsé par Monkey Industries",
                 icon_url: "https://cdn.discordapp.com/avatars/321639963848343563/dda3b965538cd51f7e3c218c64817833.png?size=4096"
             }
 		})	
