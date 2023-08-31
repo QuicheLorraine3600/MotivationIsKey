@@ -24,7 +24,7 @@ export default class EventHandler {
 				if (channel instanceof TextChannel) {
 					getDailyQuote().then(quote => {
 						getEmbedOfQuote(quote).then(embed => {
-							channel.send({ content: ":alarm_clock: Debout les loulous @here ! :muscle::chart_with_upwards_trend:", embeds: [embed] })
+							channel.send({ content: ":alarm_clock: Debout les loulous ! :muscle::chart_with_upwards_trend:", embeds: [embed] })
 						})
 					})
 				}
