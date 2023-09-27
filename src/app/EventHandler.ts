@@ -29,6 +29,17 @@ export default class EventHandler {
 					})
 				}
 			})
+
+			// Badminton
+			registerChannelCronTask(bot, "975776769435107419", "983510457421819954", "0 17 * * 7", (channel) => {
+				if (channel instanceof TextChannel) {
+					getDailyQuote().then(quote => {
+						getEmbedOfQuote(quote).then(embed => {
+							channel.send({ content: ":badminton: :hot_face: Inscriptions au badminton par ici les loulous @here ! https://sport.unil.ch/?pid=80&aid=61#content :muscle:", embeds: [embed] })
+						})
+					})
+				}
+			})
 		});
 	}
 }
