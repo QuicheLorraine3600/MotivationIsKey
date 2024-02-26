@@ -30,7 +30,7 @@ export default class EventHandler {
 				}
 			})
 
-			Badminton
+			// Badminton
 			registerChannelCronTask(bot, "975776769435107419", "983510457421819954", "0 17 * * 3", (channel) => {
 				if (channel instanceof TextChannel) {
 					getDailyQuote().then(quote => {
