@@ -13,7 +13,7 @@ export default class EventHandler {
 			logger.info(`Ready! Logged in as ${c.user.tag}`);
 
 			bot.client.user?.setActivity({
-				name: "Total Stock",
+				name: "BTC price",
 				type: ActivityType.Watching
 			})
 
