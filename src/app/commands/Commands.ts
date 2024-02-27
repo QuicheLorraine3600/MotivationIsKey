@@ -8,6 +8,7 @@ import PublicDomain from "./src/PublicDomain";
 import Votation from "./src/Votation";
 import FakeMessage from "./src/FakeMessage";
 import ScheduleMessage from "./src/ScheduleMessage";
+import Rename from "./src/Rename";
 
 export default List<Command>([
 	new Help(),
@@ -16,5 +17,6 @@ export default List<Command>([
 	new PublicDomain(),
 	new Votation(),
 	new FakeMessage(),
-	new ScheduleMessage()
+	new ScheduleMessage(),
+	new Rename()
 ])
