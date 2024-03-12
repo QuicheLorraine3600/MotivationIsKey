@@ -35,7 +35,7 @@ function embedBuilder(title = '', author = {name: '', icon_url: ''}, color = 0x0
         fields: [],
         timestamp: new Date(),
         footer: {
-            text: 'Créé par le génial KyloRen3600',
+            text: 'Créé par le génial KyloRen3600 et le sublime Athanaze',
             icon_url: 'https://cdn.discordapp.com/avatars/321639963848343563/6a3c8237670a4d41730194452a6b940f.webp',
         }
         , image: {

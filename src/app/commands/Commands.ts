@@ -9,6 +9,7 @@ import Votation from "./src/Votation";
 import FakeMessage from "./src/FakeMessage";
 import ScheduleMessage from "./src/ScheduleMessage";
 import Rename from "./src/Rename";
+import Accounting from "./src/Accounting";
 
 export default List<Command>([
 	new Help(),
