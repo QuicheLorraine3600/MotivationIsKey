@@ -2,16 +2,16 @@ import { Guild, SlashCommandBuilder, TextChannel, User } from "discord.js";
 
 import Bot from "../../Bot";
 import { Command, Interaction } from "../Command";
-import { TransactionEntry, getAllTransactions, registerTransaction, removeTransaction } from "../../modules/AccountingStuff";
+import { TransactionEntry, getAllTransactions, getTransaction, registerTransaction, removeTransaction } from "../../modules/TransactionStuff";
 import DefaultEmbed from "../../utils/DefaultEmbed";
 
-async function buildMessage(transaction: TransactionEntry, title: string, guild: Guild, tag: Boolean, embedAuthor: User | null = null) {
+export async function buildTransactionMessage(transaction: TransactionEntry, title: string, guild: Guild, tag: Boolean, embedAuthor: User | null = null) {
 	const embed = new DefaultEmbed()
 		.setTitle(title)
 		.addFields([
 			{
 				name: "Transaction ID",
-				value: transaction.id ? transaction.id.toString() : "none",
+				value: transaction.id ? "n°" + transaction.id.toString() : "none",
 				inline: true
 			},
 			{
@@ -32,7 +32,7 @@ async function buildMessage(transaction: TransactionEntry, title: string, guild:
 				value: transaction.reason
 			}
 		])
-		.setFooter({ text: 'Presque codé par le sublime Athanaze', iconURL: guild.iconURL() ?? "" });
+		.setFooter({ text: 'Union des Banques Simiennes, presque codé par le sublime Athanaze', iconURL: guild.iconURL() ?? "" });
 
 	if (embedAuthor) {
 		embed.setAuthor({
@@ -50,7 +50,7 @@ async function buildMessage(transaction: TransactionEntry, title: string, guild:
 export default class Transaction extends Command {
 	override get data() {
 		return new SlashCommandBuilder()
-			.setName('bank')
+			.setName('ubs')
 			.setDescription('The bank of the Monkey Empire')
 
 			.addSubcommand(subcommand =>
@@ -132,7 +132,7 @@ export default class Transaction extends Command {
 				registerTransaction(entr, async (transactionId) => {
 					if (transactionId) {
 						entr.id = transactionId
-						interaction.reply(await buildMessage(entr, "New pending transaction registered :bank:", channel.guild, true, interaction.user))
+						interaction.reply(await buildTransactionMessage(entr, "New pending transaction registered :bank:", channel.guild, true, interaction.user))
 					} else {
 						interaction.reply({ content: "This is broken" })
 					}
@@ -141,12 +141,18 @@ export default class Transaction extends Command {
 
 			if (subCommand === "complete_transaction") {
 				const transactionId = interaction.options.getInteger("transaction_id", true)
-				// TODO: GET TRANSACTION BEFORE DELETION
-				removeTransaction(transactionId, (removed) => {
-					if (removed) {
-						interaction.reply("Transaction completed")
+
+				getTransaction(transactionId, (transaction) => {
+					if (transaction) {
+						removeTransaction(transactionId, async (removed) => {
+							if (removed) {
+								interaction.reply(await buildTransactionMessage(transaction, "Transaction completed !", channel.guild, true, interaction.user))
+							} else {
+								interaction.reply("No transaction with the specified id !")
+							}
+						})
 					} else {
-						interaction.reply("No transaction with the specified id !")
+						interaction.reply({ content: "No transaction with the specified id !", ephemeral: true })
 					}
 				})
 			}
@@ -160,7 +166,7 @@ export default class Transaction extends Command {
 					else {
 						await interaction.reply(`Account of ${target.displayName}`)
 						transactions.forEach(async transaction => {
-							channel.send(await buildMessage(transaction, "Pending transaction", channel.guild, false))
+							channel.send(await buildTransactionMessage(transaction, "Pending transaction", channel.guild, false))
 						})
 					}
 				})

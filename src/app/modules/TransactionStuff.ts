@@ -1,4 +1,4 @@
-import { DB } from "../modules/Database";
+import { DB } from "./Database";
 import Bot from "../Bot";
 import logger from "./Logger";
 
@@ -60,7 +60,7 @@ export function getAllTransactions(monkey: string | null, callback: (transaction
 	const requestTemplate = monkey ? "SELECT * FROM transactions WHERE sending_monkey = ? OR receiving_monkey = ?" : "SELECT * FROM transactions"
 	DB.serialize(() => {
 		const stmt = DB.prepare(requestTemplate);			
-		stmt.all([monkey, monkey], (err, transactions: TransactionEntry[]) => {
+		stmt.all(monkey ? [monkey, monkey] : [], (err, transactions: TransactionEntry[]) => {
 			if (err) {
 				logger.error(err)
 			} else {
