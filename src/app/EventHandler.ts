@@ -44,7 +44,7 @@ export default class EventHandler {
 			})
 
 			// Pending transactions
-			registerChannelCronTask(bot, "975776769435107419", "1217508121744900196", "19 17 * * 3", (channel) => {
+			registerChannelCronTask(bot, "975776769435107419", "1217508121744900196", "0 17 * * *", (channel) => {
 				if (channel instanceof TextChannel) {
 					getAllTransactions(null, transactions => {
 						transactions.forEach(async transaction => {
