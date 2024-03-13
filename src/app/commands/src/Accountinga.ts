@@ -39,13 +39,14 @@ export default class Accounting extends Command {
 		const channel = interaction.channel
 		if (channel instanceof TextChannel) {
 			const entr: AccountingEntry = {
-				sending_monkey:sending_monkey,
-				receiving_monkey:receiving_monkey,
-				amount:amount,
-				unit:unit
+				sending_monkey: sending_monkey.username,
+				receiving_monkey: receiving_monkey.username,
+				amount: amount,
+				unit: unit,
+				paid: 0
 			}
 
-			registerNewPendingPayment(bot, entr)
+			registerNewPendingPayment(entr)
 
 			interaction.reply({ content: "Accounting entry added !", ephemeral: true })
 		}

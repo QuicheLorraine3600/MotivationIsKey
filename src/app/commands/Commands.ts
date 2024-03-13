@@ -9,7 +9,7 @@ import Votation from "./src/Votation";
 import FakeMessage from "./src/FakeMessage";
 import ScheduleMessage from "./src/ScheduleMessage";
 import Rename from "./src/Rename";
-import Accounting from "./src/Accounting";
+import Transaction from "./src/Transaction";
 
 export default List<Command>([
 	new Help(),
@@ -19,5 +19,6 @@ export default List<Command>([
 	new Votation(),
 	new FakeMessage(),
 	new ScheduleMessage(),
-	new Rename()
+	new Rename(),
+	new Transaction()
 ])

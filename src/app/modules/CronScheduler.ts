@@ -49,7 +49,7 @@ function scheduleMessage(bot: Bot, scheduledMessage: ScheduledMessage) {
 export function loadMessagesFromDB(bot: Bot) {
 	DB.serialize(() => {			
 		DB.each("SELECT * FROM scheduled_messages", (err, scheduledMessage: ScheduledMessage) => {
-			scheduleMessage(bot, scheduledMessage)
+			if (scheduledMessage) scheduleMessage(bot, scheduledMessage)
 		});
 	});
 }
@@ -61,3 +61,11 @@ export function registerScheduledMessage(bot: Bot, scheduledMessage: ScheduledMe
 		stmt.run(scheduledMessage.cron, scheduledMessage.guildId, scheduledMessage.channelId, scheduledMessage.message, scheduledMessage.author, scheduledMessage.avatar)		
 	});
 }
+
+DB.run('CREATE TABLE "scheduled_messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cron" TEXT NOT NULL, "guildId" TEXT NOT NULL, "channelId" TEXT NOT NULL, "message" TEXT NOT NULL, "author" TEXT NOT NULL, "avatar" TEXT NOT NULL)', (err) => {
+	if (err) {
+		logger.info("SQL: table scheduled_messages already created")
+	} else {
+		logger.info("SQL: table scheduled_messages created")
+	}
+})

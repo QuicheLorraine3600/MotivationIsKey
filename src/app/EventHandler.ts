@@ -35,7 +35,7 @@ export default class EventHandler {
 				if (channel instanceof TextChannel) {
 					getDailyQuote().then(quote => {
 						getEmbedOfQuote(quote).then(embed => {
-							channel.send({ content: ":badminton: :hot_face: Inscriptions au badminton par ici les loulous <@547008827233402900> <@425306913127792650> <@360794698001940498> <@268621428876640256> <@398225960312373248> <@321639963848343563> ! https://sport.unil.ch/?pid=80&aid=61#content :muscle:", embeds: [embed] })
+							channel.send({ content: ":badminton: :hot_face: Inscriptions au badminton par ici les loulous <@&1217476690457002115> ! https://sport.unil.ch/?pid=80&aid=61#content :muscle:", embeds: [embed] })
 						})
 					})
 				}
