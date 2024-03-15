@@ -43,16 +43,16 @@ export default class EventHandler {
 				}
 			})
 
-			// Pending transactions
-			registerChannelCronTask(bot, "975776769435107419", "1217508121744900196", "0 17 * * *", (channel) => {
-				if (channel instanceof TextChannel) {
-					getAllTransactions(null, transactions => {
-						transactions.forEach(async transaction => {
-							channel.send(await buildTransactionMessage(transaction, "Pending transaction", channel.guild, true))
-						})
-					})
-				}
-			})
+			// Pending transactions (relou)
+			// registerChannelCronTask(bot, "975776769435107419", "1217508121744900196", "0 17 * * *", (channel) => {
+			// 	if (channel instanceof TextChannel) {
+			// 		getAllTransactions(null, transactions => {
+			// 			transactions.forEach(async transaction => {
+			// 				channel.send(await buildTransactionMessage(transaction, "Pending transaction", channel.guild, true))
+			// 			})
+			// 		})
+			// 	}
+			// })
 		});
 	}
 }
